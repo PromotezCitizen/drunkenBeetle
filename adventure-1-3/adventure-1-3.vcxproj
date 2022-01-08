@@ -112,7 +112,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
@@ -139,14 +139,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Documents\Project1\beetle.cpp" />
-    <ClCompile Include="..\..\..\..\Documents\Project1\beetleMoveMain.cpp" />
-    <ClCompile Include="..\..\..\..\Documents\Project1\printFunc.cpp" />
-    <ClCompile Include="..\..\..\..\Documents\Project1\room.cpp" />
     <ClCompile Include="BeetleMove.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Documents\Project1\1-3_func.h" />
     <ClInclude Include="BeetleMove.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
