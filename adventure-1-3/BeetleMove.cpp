@@ -18,6 +18,7 @@ CBeetleMove::CBeetleMove() {
 CBeetleMove::~CBeetleMove() {
 	for (LLINT row = 0; row < _Row; row++) delete[] _Map[row];
 	delete[] _Map;
+	delete[] _TimeStamp;
 }
 
 void CBeetleMove::Run() {
@@ -33,10 +34,6 @@ void CBeetleMove::Run() {
 	BeetleRun();
 
 	PrintTimeStamp();
-}
-
-void CBeetleMove::ShowInfo() {
-	cout << "10회동안 반복되는 술취한 딱정벌레입니다." << endl;
 }
 
 void CBeetleMove::SetMap() {
@@ -287,11 +284,6 @@ LLINT CBeetleMove::CalcTick(system_clock::time_point start_time, bool *flag) {
 		_Tick %= MAX_TICK;
 	}
 	return duration_cast<microseconds>(system_clock::now() - ret).count();
-}
-
-void CBeetleMove::ClearMap() {
-	for (int row = 0; row < _Row; row++)
-		memset(_Map[row], 0, sizeof(BYTE) * _Row);
 }
 
 void CBeetleMove::PrintTimeStamp() {
