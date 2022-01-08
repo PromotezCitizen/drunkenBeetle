@@ -21,8 +21,12 @@ protected:
 
 	void SetBeetle();
 	void SetBeetleCnt();
-	void InitBeetles();
-	void BeetleLocUniform(vector<BEETLE>::iterator iter, int row, int col);
+	void SetBeetleLocCond();
+	void SetBeetleLocCond_One() { BeetleLoc = &CBeetleMove::BeetleLocComb; }
+	void SetBeetleVector() { for (char cnt = 0; cnt < _BeetleCnt; cnt++) _Beetle.push_back({ 0,0 }); }
+	void BeetleLocUniform(vector<BEETLE>::iterator iter, int row, int col) {
+		do { BeetleLocComb(iter, row, col); } while (_Map[(*iter)._row][(*iter)._col] == 0);
+	}
 	void BeetleLocComb(vector<BEETLE>::iterator iter, int row, int col);
 
 	void SetMovement();

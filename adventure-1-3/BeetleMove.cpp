@@ -61,7 +61,8 @@ void CBeetleMove::InitMap() {
 
 void CBeetleMove::SetBeetle() {
 	SetBeetleCnt();
-	InitBeetles();
+	(_BeetleCnt == 1) ? SetBeetleLocCond_One() : SetBeetleLocCond();
+	SetBeetleVector();
 }
 
 void CBeetleMove::SetBeetleCnt() {
@@ -77,7 +78,7 @@ void CBeetleMove::SetBeetleCnt() {
 	memset(_TimeStamp, 0, sizeof(double) * LOOP);
 }
 
-void CBeetleMove::InitBeetles() {
+void CBeetleMove::SetBeetleLocCond() {
 	string str;
 
 	cout << "딱정벌레의 초기 위치를 서로 겹치게 하겠습니까?(T/F) >> ";
@@ -87,18 +88,6 @@ void CBeetleMove::InitBeetles() {
 	} while (!CompareStr(str));
 
 	BeetleLoc = (CompareStrF(str) ? &CBeetleMove::BeetleLocUniform : &CBeetleMove::BeetleLocComb);
-
-	for (char cnt = 0; cnt < _BeetleCnt; cnt++) _Beetle.push_back({ 0,0 });
-}
-
-void CBeetleMove::BeetleLocUniform(vector<BEETLE>::iterator iter, int row, int col) {
-	do{
-		(*iter)._row = row; (*iter)._col = col;
-		if (_Map[(*iter)._row][(*iter)._col] == 0) {
-			_Map[(*iter)._row][(*iter)._col] = 1;
-			_Passed += 1;
-		}
-	} while (_Map[(*iter)._row][(*iter)._col] == 0);
 }
 
 void CBeetleMove::BeetleLocComb(vector<BEETLE>::iterator iter, int row, int col) {
