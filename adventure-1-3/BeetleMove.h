@@ -1,6 +1,7 @@
 #pragma once
 
 #include "pch.h"
+#include "StrCmp.h"
 
 class CBeetleMove {
 public:
@@ -44,9 +45,9 @@ protected:
 
 	void PrintTimeStamp();
 
-	bool CompareStr(string str);
-	bool CompareStrT(string str);
-	bool CompareStrF(string str);
+	//bool CompareStr(string str);
+	//bool CompareStrT(string str);
+	//bool CompareStrF(string str);
 
 	void IsBeetlePassed(BEETLE beetle);
 
@@ -59,5 +60,7 @@ private:
 	vector<BEETLE> _Beetle;
 	double *_TimeStamp = nullptr;
 	BYTE **_Map = nullptr;
+
+	CStrCmp _Strcmp;
 };
 

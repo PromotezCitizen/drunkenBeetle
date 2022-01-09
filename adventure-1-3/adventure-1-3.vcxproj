@@ -141,10 +141,12 @@
   <ItemGroup>
     <ClCompile Include="BeetleMove.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="StrCmp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BeetleMove.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="StrCmp.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

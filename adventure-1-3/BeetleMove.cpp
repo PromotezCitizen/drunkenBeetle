@@ -84,10 +84,10 @@ void CBeetleMove::SetBeetleLocCond() {
 	cout << "딱정벌레의 초기 위치를 서로 겹치게 하겠습니까?(T/F) >> ";
 	do {
 		cin >> str;
-		if (!CompareStr(str)) cout << "옳지 않은 값입니다. T/F 둘 중 하나로 적어주세요 >> ";
-	} while (!CompareStr(str));
+		if (!_Strcmp.CompareStrTF(str)) cout << "옳지 않은 값입니다. T/F 둘 중 하나로 적어주세요 >> ";
+	} while (!_Strcmp.CompareStrTF(str));
 
-	BeetleLoc = (CompareStrF(str) ? &CBeetleMove::BeetleLocUniform : &CBeetleMove::BeetleLocComb);
+	BeetleLoc = (_Strcmp.CompareStrF(str) ? &CBeetleMove::BeetleLocUniform : &CBeetleMove::BeetleLocComb);
 }
 
 void CBeetleMove::BeetleLocComb(vector<BEETLE>::iterator iter, int row, int col) {
@@ -103,9 +103,9 @@ void CBeetleMove::SetMovement() {
 	cout << "술 취한것처럼, 벽에 닿아도 딱정벌레가 움직이는 규칙을 추가하시겠습니까? (추가 : T, 유지 : F) >> ";
 	do { 
 		cin >> str; 
-		if (!CompareStr(str)) cout << "옳지 않은 값입니다. T/F 둘 중 하나로 적어주세요 >> ";
-	} while (!CompareStr(str));
-	Walk = (CompareStrT(str) ? &CBeetleMove::BeetleWallWalk : &CBeetleMove::BeetleWalk);
+		if (!_Strcmp.CompareStrTF(str)) cout << "옳지 않은 값입니다. T/F 둘 중 하나로 적어주세요 >> ";
+	} while (!_Strcmp.CompareStrTF(str));
+	Walk = (_Strcmp.CompareStrT(str) ? &CBeetleMove::BeetleWallWalk : &CBeetleMove::BeetleWalk);
 }
 
 void CBeetleMove::BeetleWalk(BEETLE &beetle, int movement) {
@@ -162,10 +162,10 @@ void CBeetleMove::SetShowMovement() {
 	cout << "딱정벌레의 이동과정을 보겠습니까?(T/F) >> ";
 	do {
 		cin >> str;
-		if (!CompareStr(str)) cout << "옳지 않은 값입니다. T/F 둘 중 하나로 적어주세요 >> ";
-	} while (!CompareStr(str));
+		if (!_Strcmp.CompareStrTF(str)) cout << "옳지 않은 값입니다. T/F 둘 중 하나로 적어주세요 >> ";
+	} while (!_Strcmp.CompareStrTF(str));
 
-	_ShowMove = (CompareStrT(str) ? true : false);
+	_ShowMove = (_Strcmp.CompareStrT(str) ? true : false);
 }
 
 void CBeetleMove::BeetleRun() {
@@ -281,20 +281,20 @@ void CBeetleMove::PrintTimeStamp() {
 		printf("%d회차 : %lf초\n", idx + 1, _TimeStamp[idx]);
 }
 
-bool CBeetleMove::CompareStr(string str) {
-	return ((CompareStrT(str) ||
-		CompareStrF(str)) == true) ? true : false;
-}
-
-bool CBeetleMove::CompareStrT(string str) {
-	return ((str.compare("T") == 0) ||
-		(str.compare("t") == 0) == true) ? true : false;
-}
-
-bool CBeetleMove::CompareStrF(string str) {
-	return ((str.compare("F") == 0) ||
-		(str.compare("f") == 0) == true) ? true : false;
-}
+//bool CBeetleMove::CompareStr(string str) {
+//	return ((CompareStrT(str) ||
+//		CompareStrF(str)) == true) ? true : false;
+//}
+//
+//bool CBeetleMove::CompareStrT(string str) {
+//	return ((str.compare("T") == 0) ||
+//		(str.compare("t") == 0) == true) ? true : false;
+//}
+//
+//bool CBeetleMove::CompareStrF(string str) {
+//	return ((str.compare("F") == 0) ||
+//		(str.compare("f") == 0) == true) ? true : false;
+//}
 
 void CBeetleMove::IsBeetlePassed(BEETLE beetle) {
 	if (_Map[beetle._row][beetle._col] == 0) {
